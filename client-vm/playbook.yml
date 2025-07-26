@@ -1,0 +1,39 @@
+---
+- name: Install XFCE desktop and Firefox on Ubuntu
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install XFCE and LightDM
+      apt:
+        name:
+          - xfce4
+          - xfce4-goodies
+          - lightdm
+        state: present
+
+    - name: Set LightDM as default display manager
+      debconf:
+        name: lightdm
+        question: shared/default-x-display-manager
+        value: lightdm
+        vtype: select
+
+    - name: Enable LightDM to start at boot
+      systemd:
+        name: lightdm
+        enabled: yes
+
+    - name: Install Firefox browser
+      apt:
+        name: firefox
+        state: present
+
+    - name: Reboot the machine
+      reboot:
+        msg: "Rebooting after installing GUI and browser"
+        reboot_timeout: 600

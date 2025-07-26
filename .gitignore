@@ -1,0 +1,14 @@
+# Vagrant junk
+.vagrant/
+*.box
+
+# VPN/Secrets
+*.ovpn
+*.pem
+*.key
+*.crt
+
+# Misc
+*.log
+*.zip
+*.env
