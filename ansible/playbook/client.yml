@@ -1,0 +1,23 @@
+---
+# Client playbook - Native Ubuntu applications
+- name: Configure Client VMs
+  hosts: clients
+  become: yes
+  
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install minimal user applications
+      apt:
+        name:
+          - firefox
+          - curl
+          - wget
+          - vim
+          - git
+        state: present
+
+    # ...remaining client-specific tasks...

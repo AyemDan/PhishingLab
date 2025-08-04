@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  # Simple web server for testing
+  web-server:
+    image: nginx:alpine
+    container_name: client-webserver
+    ports:
+      - "8080:80"
+    volumes:
+      - ./web:/usr/share/nginx/html
+    restart: unless-stopped

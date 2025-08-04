@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # OpenVPN Server
+  openvpn:
+    image: kylemanna/openvpn:latest
+    container_name: openvpn-server
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "1194:1194/udp"
+    volumes:
+      - ./openvpn:/etc/openvpn
+    restart: unless-stopped
+
+  # Step CA (Certificate Authority)
+  step-ca:
+    image: smallstep/step-ca:latest
+    container_name: step-ca
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./step-ca:/home/step
+    environment:
+      - DOCKER_STEPCA_INIT_NAME=Phishing Lab CA
+      - DOCKER_STEPCA_INIT_DNS_NAMES=step-ca,localhost
+    restart: unless-stopped
+
+  # Mail Server (simple SMTP)
+  mailserver:
+    image: mailhog/mailhog:latest
+    container_name: mailserver
+    ports:
+      - "1025:1025"   # SMTP
+      - "8025:8025"   # Web UI
+    restart: unless-stopped
