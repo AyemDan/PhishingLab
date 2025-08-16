@@ -8,17 +8,20 @@ CLIENT_COUNT = ENV['CLIENT_COUNT'] || 1
 
 Vagrant.configure("2") do |config|
   # Base box - Custom lab box
-  config.vm.box = "lab"
+  config.vm.box = "flascsys.lab"
   
   # Simplified Hyper-V provider configuration
   config.vm.provider "hyperv" do |hv|
     hv.memory = 2048
   end
 
+  # Disable default /vagrant synced folder to avoid SMB prompts
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
   # Server VMs - Core infrastructure (VPN, CA, Mail, Auth)
   (1..SERVER_COUNT.to_i).each do |i|
-    config.vm.define "server-vm#{i}" do |server|
-      server.vm.hostname = "server#{i}"
+    config.vm.define "server-vm-#{i}" do |server|
+      server.vm.hostname = "server-#{i}"
 
       # Rsync server files to VM
       server.vm.synced_folder "files/server/", "/opt/server/", type: "rsync", rsync__exclude: [".git/", ".DS_Store"], rsync__args: ["--verbose", "--archive", "--delete", "-z"]

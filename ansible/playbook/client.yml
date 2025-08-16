@@ -13,7 +13,6 @@
     - name: Install minimal user applications
       apt:
         name:
-          - firefox
           - curl
           - wget
           - vim
