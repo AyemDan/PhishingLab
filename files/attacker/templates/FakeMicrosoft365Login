@@ -1,0 +1,5 @@
+<p>Dear {{.FirstName}},</p>
+<p>Your Office365 credentials need to be re-confirmed due to a recent security update.</p>
+<p><a href="{{.URL}}">Confirm Now</a></p>
+<p>Microsoft Support</p>
+

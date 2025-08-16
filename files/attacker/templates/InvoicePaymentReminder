@@ -1,0 +1,5 @@
+<p>Hi {{.FirstName}},</p>
+<p>This is a reminder that invoice #INV-{{rand 1000 9999}} is due today. Please review and complete payment to avoid late fees.</p>
+<p><a href="{{.URL}}">View Invoice</a></p>
+<p>Thanks,<br>Accounts Payable</p>
+

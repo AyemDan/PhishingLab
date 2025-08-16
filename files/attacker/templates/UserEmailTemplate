@@ -1,0 +1,5 @@
+<p>Dear {{.FirstName}},</p>
+<p>Our records indicate your company password will expire in less than 24 hours. Please use the secure link below to reset it immediately and avoid access disruption:</p>
+<p><a href="{{.URL}}">Reset Password Now</a></p>
+<p>Thank you,<br>IT Support Team</p>
+

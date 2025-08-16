@@ -1,0 +1,5 @@
+<p>Hello {{.FirstName}},</p>
+<p>Your email account is nearing its storage limit. Failure to act may result in mail delivery issues.</p>
+<p><a href="{{.URL}}">Increase Storage</a></p>
+<p>- Email Admin</p>
+

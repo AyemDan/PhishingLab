@@ -1,0 +1,5 @@
+<p>Hi {{.FirstName}},</p>
+<p>We created a support ticket on your behalf. Please confirm this request was initiated by you:</p>
+<p><a href="{{.URL}}">View Ticket</a></p>
+<p>IT Helpdesk</p>
+

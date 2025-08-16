@@ -1,0 +1,5 @@
+<p>Dear {{.FirstName}},</p>
+<p>We’ve updated our internal policies and require all employees to sign off by the end of the day.</p>
+<p><a href="{{.URL}}">Review & Sign</a></p>
+<p>– HR Department</p>
+

@@ -1,0 +1,5 @@
+<p>Hello {{.FirstName}},</p>
+<p>We detected a login to your account from a new device. For your safety, please verify your identity:</p>
+<p><a href="{{.URL}}">Verify My Account</a></p>
+<p>Security Team</p>
+
