@@ -1,0 +1,28 @@
+---
+- name: Setup GoPhish container on attacker VMs
+  hosts: attackers
+  become: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Make startup script executable
+      file:
+        path: /opt/attacker/start-services.sh
+        mode: '0755'
+        owner: vagrant
+        group: vagrant
+
+    - name: Start GoPhish container
+      shell: /opt/attacker/start-services.sh
+      become_user: vagrant
+
+    - name: Display setup completion message
+      debug:
+        msg: |
+          Attacker setup complete!
+          - GoPhish Admin Panel: http://localhost:3333
+          - GoPhish Server: http://localhost:8080

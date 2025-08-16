@@ -1,0 +1,9 @@
+---
+# Server playbook - Simple containerized setup
+- name: Configure Server Infrastructure 
+  hosts: servers
+  become: yes
+    
+  tasks:
+
+    # ...remaining server-specific tasks...
